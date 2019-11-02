@@ -26,10 +26,10 @@ bot.on('message', message=>{
         else{
             message.channel.sendMessage('invalid args');
         }
-      break;
+        break;
       case 'clear':
-        if(!args[1]) return message.reply('Error please define second arg')
-        message.channel.blukDelete(args[1]);
+        if(!args[1]) return message.reply('Error; please define second arg')
+        message.channel.bulkDelete(args[1]);
         break;
     }
 })
