@@ -19,6 +19,18 @@ bot.on('message', message=>{
       case 'website':
         message.channel.sendMessage('twitch.tv/akaarie');
         break;
+      case 'info':
+        if(args[1] == 'version'){
+            message.channel.sendMessage('version '+ version);
+        }
+        else{
+            message.channel.sendMessage('invalid args');
+        }
+      break;
+      case 'clear':
+        if(!args[1]) return message.reply('Error please define second arg')
+        message.channel.blukDelete(args[1]);
+        break;
     }
 })
 
