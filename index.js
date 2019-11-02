@@ -6,7 +6,7 @@ const token = 'NjQwMjgzNjEwNDU2NTIyNzUy.Xb3qvQ.aVNwLMqlN_Pb3FHFjy__z_S1AQw';
 const PREFIX = '!';
 
 bot.on('ready',()=>{
-  console.log('This bot is online!')
+  console.log('This bot is online!');
 })
 
 bot.on('message', message=>{
@@ -14,23 +14,41 @@ bot.on('message', message=>{
 
     switch(args[0]){
        case 'ping':
-        message.channel.sendMessage('pong!');
+        message.channel.send('pong!');
         break;
+            
       case 'website':
-        message.channel.sendMessage('twitch.tv/akaarie');
+        message.channel.send('twitch.tv/akaarie');
         break;
+            
       case 'info':
         if(args[1] == 'version'){
-            message.channel.sendMessage('version '+ version);
+            message.channel.send('version '+ version);
         }
         else{
-            message.channel.sendMessage('invalid args');
+            message.channel.send('invalid args');
         }
         break;
+            
       case 'clear':
-        if(!args[1]) return message.reply('Error; please define second arg')
+        if(!args[1]){ 
+            return message.reply('Error; please define a second argument.');
+        }
         message.channel.bulkDelete(args[1]);
         break;
+  
+      case 'embed':
+            const embed = new Discord.RichEmbed()
+            .setTitle('User Information')
+            .addField('Player Name', message.author.username)
+            .addField('Version', '1.0.1')
+            .addField('Current Server', message.guild.name)
+            .setColor(0xF1C40F)
+            .setThumbnail(message.author.avatarURL)
+            
+            message.channel.sendEmbed(embed);
+            break;
+            
     }
 })
 
