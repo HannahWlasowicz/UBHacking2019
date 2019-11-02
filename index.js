@@ -41,9 +41,8 @@ bot.on('message', message=>{
             const embed = new Discord.RichEmbed()
             .setTitle('User Information')
             .addField('Player Name', message.author.username)
-            .addField('Version', '1.0.1')
             .addField('Current Server', message.guild.name)
-            .setColor(0xF1C40F)
+            .setColor(0xffcccc)
             .setThumbnail(message.author.avatarURL)
             
             message.channel.sendEmbed(embed);
