@@ -3,13 +3,19 @@ const bot = new Discord.Client();
 
 //test
 const token = 'NjQwMjgzNjEwNDU2NTIyNzUy.Xb3qvQ.aVNwLMqlN_Pb3FHFjy__z_S1AQw';
+const PREFIX = '!';
+
 bot.on('ready',()=>{
   console.log('This bot is online!')
 })
 
-bot.on('message', msg=>{
-    if (msg.content==="slut"){
-        msg.reply('you know it lol');
+bot.on('message', message=>{
+    let args  = message.content.substring(PREFIX.length).split(" ");
+
+    switch(args[0]){
+       case 'ping':
+       message.channel.sendMessage('pong!');
+       break;
     }
 })
 
