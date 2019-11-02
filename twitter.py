@@ -33,7 +33,7 @@ def expand(bob):
         if bob is None or not 'discord' in expanded:
             return ""
         #if expanded is not None and ("wn." in expanded or ".io" in expanded or "/contest/" in expanded):
-            return expanded
+        return expanded
     except Exception as e:
         print(e)
         print('error expanding url'+ bob)
