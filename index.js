@@ -14,8 +14,11 @@ bot.on('message', message=>{
 
     switch(args[0]){
        case 'ping':
-       message.channel.sendMessage('pong!');
-       break;
+        message.channel.sendMessage('pong!');
+        break;
+      case 'website':
+        message.channel.sendMessage('twitch.tv/akaarie');
+        break;
     }
 })
 
