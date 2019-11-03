@@ -56,6 +56,9 @@ bot.on('message', message=>{
 
             message.channel.sendEmbed(embed);
             break;
+      case 'finance':
+          message.channel.send('https://learn.saylor.org/course/view.php?id=63&sectionid=596');
+          break;
 
       case 'raid':
             // const req = require('./main.js');
