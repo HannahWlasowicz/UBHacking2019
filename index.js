@@ -7,7 +7,15 @@ const PREFIX = '!';
 
 bot.on('ready',()=>{
   console.log('This bot is online!');
-})
+});
+
+bot.on('guildMemberAdd', member=>{
+    const channel = member.guild.channels.find(channel => channel.name === "welcome");
+    if(!channel) return;
+    const rules = member.guild.channels.find(rules => rules.name === "rules")
+    channel.send(`Welcome to our server, ${member}, please read the rules in the ${rules} channel! <3`)
+});
+
 
 bot.on('message', message=>{
     let args  = message.content.substring(PREFIX.length).split(" ");
@@ -42,7 +50,7 @@ bot.on('message', message=>{
             .setTitle('User Information')
             .addField('Player Name', message.author.username)
             .addField('Current Server', message.guild.name)
-            .setColor(0xffcccc)
+            .setColor(0xff9999)
             .setThumbnail(message.author.avatarURL)
             
             message.channel.sendEmbed(embed);
