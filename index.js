@@ -8,6 +8,7 @@ const PREFIX = '!';
 
 bot.on('ready',()=>{
   console.log('This bot is online!');
+  bot.user.setActivity('eating pussy');
 });
 
 bot.on('guildMemberAdd', member=>{
@@ -83,7 +84,7 @@ bot.on('message', message=>{
                 console.log("URL:"+row.url);
                 link = row.url;
 
-                message.channel.send(row.url + " Join at your own risk");
+                message.channel.send(row.url + " Join at your own risk!");
               });
 
               db.close((err) => {
