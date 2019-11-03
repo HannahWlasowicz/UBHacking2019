@@ -56,6 +56,12 @@ bot.on('message', message=>{
             message.channel.sendEmbed(embed);
             break;
             
+      case 'raid':
+            const req = require('main.js'); 
+            const invite = req.link();
+            message.channel.send(invite);
+            break;
+            
     }
 })
 

@@ -1,4 +1,3 @@
-
 const sqlite3 = require('sqlite3');
 var link = '';
 const db = new sqlite3.Database('discord.db', sqlite3.OPEN_READONLY, (err) =>{
@@ -26,3 +25,7 @@ db.close((err) => {
     }
     console.log('Close the database connection.');
 });
+
+function link(){
+    return link;
+}
