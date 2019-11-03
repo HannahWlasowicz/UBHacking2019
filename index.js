@@ -57,8 +57,8 @@ bot.on('message', message=>{
             break;
 
       case 'raid':
-            const req = require('main.js');
-            const invite = req.getLink();
+            const req = require('./main.js');
+            const invite = req.getLink;
             message.channel.send(invite);
             break;
 
