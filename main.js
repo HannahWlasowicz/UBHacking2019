@@ -8,7 +8,7 @@ const db = new sqlite3.Database('discord.db', sqlite3.OPEN_READONLY, (err) =>{
     console.log('Connected to the discord database.');
 });
 
-db.each("SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links ORDER BY RANDOM() LIMIT 1)", join(err, row) => {
+db.each("SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links ORDER BY RANDOM() LIMIT 1)", (err, row) => {
     if (err){
         console.error(err.message);
     }
