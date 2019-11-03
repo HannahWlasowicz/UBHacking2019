@@ -34,7 +34,7 @@ bot.on('message', message=>{
 
       case 'info':
         if(args[1] == 'version'){
-            message.channel.send('version '+ version);
+            message.channel.send('version '+ '1.0.1');
         }
         else{
             message.channel.send('invalid args');
