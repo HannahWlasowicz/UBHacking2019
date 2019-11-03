@@ -18,6 +18,7 @@ bot.on('guildMemberAdd', member=>{
 });
 
 
+
 bot.on('message', message=>{
     let args  = message.content.substring(PREFIX.length).split(" ");
 
@@ -47,11 +48,12 @@ bot.on('message', message=>{
         break;
 
       case 'embed':
+            let hex = '#'+Math.floor(Math.random()*16777215).toString(16);
             const embed = new Discord.RichEmbed()
             .setTitle('User Information')
-            .addField('Player Name', message.author.username)
+            .addField('User', message.author.username)
             .addField('Current Server', message.guild.name)
-            .setColor(0xff9999)
+            .setColor(hex)
             .setThumbnail(message.author.avatarURL)
 
             message.channel.sendEmbed(embed);
