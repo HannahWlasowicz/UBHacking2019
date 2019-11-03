@@ -1,33 +1,42 @@
 const sqlite3 = require('sqlite3');
-let link = '';
 
-function getLink(){
-    console.log(link + " value of invite");
-    return link;
+async function getLink(callback){
+  var val;
+  var getStmt = 'SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links ORDER BY RANDOM() LIMIT 1)';
+  console.log(getStmt);
+  db.get(getStmt, function(err, row){
+    if(!row){
+      console.log("invalid url");
+    }
+    else{
+      val = row.url;
+      console.log(val + " url value");
+      return val;
+    }
+  });
 }
-const db = new sqlite3.Database('discord.db', sqlite3.OPEN_READONLY, (err) =>{
-    if(err){
-        console.error(err.message);
-    }
-    console.log('Connected to the discord database.');
-});
+console.log('sqlite3...');
 
-db.each("SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links ORDER BY RANDOM() LIMIT 1)", (err, row) => {
-    if (err){
-        console.error(err.message);
-    }
-  console.log("URL:"+row.url);
-  link = row.url;
-  // console.log(getLink());
+  const db = new sqlite3.Database('discord.db', sqlite3.OPEN_READONLY, (err) =>{
+      if(err){
+          console.error(err.message);
+      }
+      console.log('Connected to the discord database.');
+  });
 
-  // console.log(link);
-  console.log("Printed link");
-});
+  db.each("SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links ORDER BY RANDOM() LIMIT 1)", (err, row) => {
+      if (err){
+          console.error(err.message);
+      }
+    console.log("URL:"+row.url);
+    link = row.url;
 
+    return row.url;
+  });
 
-db.close((err) => {
-    if(err){
-        console.error(err.message);
-    }
-    console.log('Close the database connection.');
-});
+  db.close((err) => {
+      if(err){
+          console.error(err.message);
+      }
+      console.log('Close the database connection.');
+  });

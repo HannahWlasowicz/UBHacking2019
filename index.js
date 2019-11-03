@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-
+const async = require('async');
 //test
 const token = 'NjQwMjgzNjEwNDU2NTIyNzUy.Xb3qvQ.aVNwLMqlN_Pb3FHFjy__z_S1AQw';
 const PREFIX = '!';
@@ -58,12 +58,18 @@ bot.on('message', message=>{
 
       case 'raid':
             const req = require('./main.js');
-            const invite = req.link;
-            console.log(invite + "inside the index file");
-            message.channel.send(invite);
-            break;
+            //const invite = req.getLink;
+            async.waterfall([req.getLink], () => {
+              console.log(invite + "inside the index file");
+              console.log("Called function");
+              message.channel.send(invite + " Hello spicy people");
+            })
+
 
     }
 })
 
+function invite(){
+
+}
 bot.login(token);
