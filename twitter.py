@@ -10,7 +10,7 @@ def launch_twitter(driver: webdriver):
     """
     :type driver: selenium.webdriver.firefox.webdriver.WebDriver
     """
-    twitter_url = "https://twitter.com/search?q=discord.gg&src=typed_query&f=live"
+    twitter_url = "https://twitter.com/search?f=tweets&vertical=default&q=discord.gg&src=unkn"
     driver.get(twitter_url)
     URLs = driver.find_elements_by_css_selector("li[data-item-id]")
     lurl = []
@@ -61,14 +61,18 @@ def gatherinfo(url, driver):
 def insert(dat):
     print("inserting into db")
     try:
-        conn = sqlite3.connect('/home/py_server/gleam2.db', timeout =15)
+        conn = sqlite3.connect('/home/jeh24/py_server/discord.db', timeout =15)
     except Error as e:
         print(e)
         return
-    for each in dat:
-        c = conn.cursor()
-        c.execute("Insert or ignore Into tmp2 Values (?,?,?,?,?)", [each.get_url(), each.get_title(), str(round(time.time())), str(each.get_end()), '0'])
-    conn.commit()
+    try:
+        for each in dat:
+            c = conn.cursor()
+            c.execute("Insert or ignore Into invite_links (url) Values (?)", [each])
+        conn.commit()
+    except sqlite3.Error as e:
+        print(e)
+        return
     conn.close()
     print("inserted into db")
 
