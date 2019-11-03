@@ -1,19 +1,26 @@
 const sqlite3 = require('sqlite3');
+const async = require('async');
 
-async function getLink(callback){
+db.getAsync = function getLink(callback){
   var val;
   var getStmt = 'SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links ORDER BY RANDOM() LIMIT 1)';
   console.log(getStmt);
-  db.get(getStmt, function(err, row){
+  return new Promise (function (resolve, reject) {
+    db.get(getStmt, function(err, row){
     if(!row){
+      if(err){
+        reject(err);
+      }
       console.log("invalid url");
     }
     else{
-      val = row.url;
+      resolve(row.url);
       console.log(val + " url value");
-      return val;
+
     }
   });
+});
+
 }
 console.log('sqlite3...');
 
