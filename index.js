@@ -24,11 +24,11 @@ bot.on('message', message=>{
        case 'ping':
         message.channel.send('pong!');
         break;
-            
+
       case 'website':
         message.channel.send('twitch.tv/akaarie');
         break;
-            
+
       case 'info':
         if(args[1] == 'version'){
             message.channel.send('version '+ version);
@@ -37,14 +37,14 @@ bot.on('message', message=>{
             message.channel.send('invalid args');
         }
         break;
-            
+
       case 'clear':
-        if(!args[1]){ 
+        if(!args[1]){
             return message.reply('Error; please define a second argument.');
         }
         message.channel.bulkDelete(args[1]);
         break;
-  
+
       case 'embed':
             const embed = new Discord.RichEmbed()
             .setTitle('User Information')
@@ -52,16 +52,16 @@ bot.on('message', message=>{
             .addField('Current Server', message.guild.name)
             .setColor(0xff9999)
             .setThumbnail(message.author.avatarURL)
-            
+
             message.channel.sendEmbed(embed);
             break;
-            
+
       case 'raid':
-            const req = require('main.js'); 
-            const invite = req.link();
+            const req = require('main.js');
+            const invite = req.getLink();
             message.channel.send(invite);
             break;
-            
+
     }
 })
 

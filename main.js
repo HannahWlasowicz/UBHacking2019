@@ -1,5 +1,9 @@
 const sqlite3 = require('sqlite3');
-var link = '';
+let link = '';
+
+function getLink(){
+    return link;
+}
 const db = new sqlite3.Database('discord.db', sqlite3.OPEN_READONLY, (err) =>{
     if(err){
         console.error(err.message);
@@ -13,8 +17,9 @@ db.each("SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links O
     }
   console.log("URL:"+row.url);
   link = row.url;
+  console.log(getLink());
 
-  console.log(link);
+  // console.log(link);
   console.log("Printed link");
 });
 
@@ -25,7 +30,3 @@ db.close((err) => {
     }
     console.log('Close the database connection.');
 });
-
-function link(){
-    return link;
-}
