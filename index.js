@@ -27,10 +27,10 @@ bot.on('message', message=>{
        case 'ping':
         message.channel.send('pong!');
         break;
-
-      case 'website':
-        message.channel.send('twitch.tv/akaarie');
-        break;
+    
+        case 'commands':
+            message.channel.send('!raid, !clear {number}, !embed, !finance, !ping, !info version');
+            break;
 
       case 'info':
         if(args[1] == 'version'){
