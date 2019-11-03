@@ -8,7 +8,7 @@ const PREFIX = '!';
 
 bot.on('ready',()=>{
   console.log('This bot is online!');
-  bot.user.setActivity('eating pussy');
+  bot.user.setActivity('with life!');
 });
 
 bot.on('guildMemberAdd', member=>{
