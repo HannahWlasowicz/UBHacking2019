@@ -2,6 +2,7 @@ const sqlite3 = require('sqlite3');
 let link = '';
 
 function getLink(){
+    console.log(link + " value of invite");
     return link;
 }
 const db = new sqlite3.Database('discord.db', sqlite3.OPEN_READONLY, (err) =>{
@@ -17,7 +18,7 @@ db.each("SELECT url FROM invite_links WHERE id IN (SELECT id FROM invite_links O
     }
   console.log("URL:"+row.url);
   link = row.url;
-  console.log(getLink());
+  // console.log(getLink());
 
   // console.log(link);
   console.log("Printed link");
