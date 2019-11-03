@@ -81,7 +81,7 @@ bot.on('message', message=>{
                 console.log("URL:"+row.url);
                 link = row.url;
 
-                message.channel.send(row.url + " Hello spicy people");
+                message.channel.send(row.url + " Join at your own risk");
               });
 
               db.close((err) => {
