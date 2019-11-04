@@ -22,6 +22,11 @@ bot.on('guildMemberAdd', member=>{
 
 bot.on('message', message=>{
     let args  = message.content.substring(PREFIX.length).split(" ");
+    let msg = message.content;
+    
+    if (msg == "no you" || msg == "no u"){
+        message.channel.send("no YOU")
+    }
 
     switch(args[0]){
        case 'ping':
