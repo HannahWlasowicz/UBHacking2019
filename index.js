@@ -22,9 +22,9 @@ bot.on('guildMemberAdd', member=>{
 
 bot.on('message', message=>{
     let args  = message.content.substring(PREFIX.length).split(" ");
-    let msg = message.content;
+    let msg = message.content.split(" ");
     
-    if (msg == "no you" || msg == "no u"){
+    if (msg[0] == "no" && (msg[1] == "u" || msg[1] == "you")){
         message.channel.send("no YOU")
     }
 
