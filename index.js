@@ -27,9 +27,9 @@ bot.on('message', message=>{
        case 'ping':
         message.channel.send('pong!');
         break;
-    
+
         case 'commands':
-            message.channel.send('!raid, !clear {number}, !embed, !finance, !ping, !info version');
+            message.channel.send('!raid, !clear {number}, !embed, !finance, !ping, !info version, !suckone');
             break;
 
       case 'info':
@@ -62,7 +62,9 @@ bot.on('message', message=>{
       case 'finance':
           message.channel.send('https://learn.saylor.org/course/view.php?id=63&sectionid=596');
           break;
-
+      case 'suckone':
+        message.reply('Suckon deeze nuts boi!');
+        break;
       case 'raid':
             // const req = require('./main.js');
             //const invite = req.getLink;
